@@ -7,8 +7,8 @@ model ServiceDesk
   parameter Real reopertures = 0.001;
   parameter Real maximResolucions = 0.41;
   parameter Integer treballadorsN1 = 10;
-  parameter Integer treballadorsN2 = 10;
-  parameter Integer treballadorsN3 = 10;
+  parameter Integer treballadorsN2 = 7;
+  parameter Integer treballadorsN3 = 5;
   
   //Variables
   Real incidencies (start = 0);
