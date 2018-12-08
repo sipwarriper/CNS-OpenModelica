@@ -1,3 +1,3 @@
 connector Incidencies
-  output Integer incidencies;
+  output Real incidencies;
 end Incidencies;

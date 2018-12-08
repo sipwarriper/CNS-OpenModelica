@@ -1,8 +1,8 @@
 model Empresa
   //Constants
-  parameter Real ratiIncidencies = 0.0001;
-  parameter Integer treballadors = 10000;
-  parameter Real reopertures = 0.001;
+  parameter Real ratiIncidencies;
+  parameter Integer treballadors;
+  parameter Real reopertures;
   //connectors
   Incidencies generades;
   Incidencies tancades;
