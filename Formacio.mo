@@ -1,4 +1,4 @@
-model FormacioN2
+model Formacio
   //Constants
   parameter Real formacio;
   parameter Real maximResolucions; //maxim de resolucions per persona i hora.
@@ -15,4 +15,4 @@ equation
   seguentNivell.incidencies = entrada.incidencies*(1-formacio);
   (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors)=0;
   der(incidenciesPendents) = max(0, (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors));
-end FormacioN2;
+end Formacio;
