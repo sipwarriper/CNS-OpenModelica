@@ -9,10 +9,15 @@ model Formacio
   //treballadors
   Integer treballadors;
   //variables
-  Real incidenciesPendents (start = 0);
+//  Real incidenciesPendents (start = 0);
 equation
-  tancades.incidencies = (entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors;
+
+  tancades.incidencies = min(entrada.incidencies*formacio*maximResolucions*treballadors, entrada.incidencies*formacio);
   seguentNivell.incidencies = entrada.incidencies*(1-formacio);
-  (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors)=0;
-  der(incidenciesPendents) = max(0, (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors));
+  entrada.incidencies-(entrada.incidencies*formacio*maximResolucions*treballadors)=0;
+
+//  tancades.incidencies = max((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors, (entrada.incidencies + incidenciesPendents));
+//  seguentNivell.incidencies = entrada.incidencies*(1-formacio);
+//  (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors)=0;
+//  der(incidenciesPendents) = max(0, (entrada.incidencies + incidenciesPendents)-((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors));
 end Formacio;

@@ -11,9 +11,8 @@ model Empresa
   Real totalObertes (start = 0);
   
 equation
-  generades.incidencies = treballadors*ratiIncidencies + totalTancades*reopertures;
   der(totalTancades) = totalTancades + tancades.incidencies;
+  generades.incidencies = treballadors*ratiIncidencies + totalTancades*reopertures;
   der (totalObertes) = totalObertes + treballadors*ratiIncidencies + totalTancades*reopertures;
-  
-  
+    
 end Empresa;
