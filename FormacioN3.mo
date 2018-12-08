@@ -5,8 +5,9 @@ model FormacioN3
   //conexions
   Incidencies entrada;
   Incidencies tancades;
+  //treballadors
+  parameter Integer treballadors = 10;
   //variables
-  Integer treballadors;
   Real incidenciesPendents (start = 0);
 equation
   tancades.incidencies = (entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors;

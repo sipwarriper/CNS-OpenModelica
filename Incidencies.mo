@@ -1,3 +1,3 @@
 connector Incidencies
-  flow Integer incidencies;
+  output Integer incidencies;
 end Incidencies;
