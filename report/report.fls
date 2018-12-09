@@ -314,12 +314,12 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT ../Resolucio.mo
 INPUT ../Resolucio.mo
 INPUT ../Resolucio.mo
-INPUT ../ServiceDesk.mo
-INPUT ../ServiceDesk.mo
-INPUT ../ServiceDesk.mo
 INPUT ../UnificadorSolucionades.mo
 INPUT ../UnificadorSolucionades.mo
 INPUT ../UnificadorSolucionades.mo
+INPUT ../ServiceDesk.mo
+INPUT ../ServiceDesk.mo
+INPUT ../ServiceDesk.mo
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out
