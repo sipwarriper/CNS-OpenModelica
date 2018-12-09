@@ -100,15 +100,34 @@ literate={á}{{\'a}}1 {à}{{\`a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {í}{{
 
 \section{Exercici 1}
 
+Per a fer el model hem dissenyat diferents models intermitjos, que ens serviran per simular cada fase del procés:
+\begin{itemize}
+  \item \textbf{ServiceDesk}: Model que simula tot el sistema de service desk de la empresa.
+  \item \textbf{Empresa}: Model que simula la generació d'incidències de l'empresa.
+  \item \textbf{Formació}: Model que simula la resolució d'incidències.
+  \item \textbf{UnificadorSolucionades}: Model que rep totes les incidències resoltes i les unifica.
+  \item \textbf{incidencies}: Classe connector per transmetre incidències 
+\end{itemize}
+
+\subsection{Connector Incidencies}
+
+\lstinputlisting[language=modelica]{../Incidencies.mo}
+
+Aquesta classe no te cap secret, és de tipus connector i té un element Real \texttt{output} amb les incidències que es van passant.
+
+\subsection{Model Empresa}
+
+\lstinputlisting[language=modelica]{../Empresa.mo}
+Passem per paràmetre al instanciar el rati d'incidències, el nombre de treballadors i el rati de reopertures. Té dos connectors de incidències, un de sortida (generades) i un d'entrada (tancades).
+
+\subsection{Model Resolucio}
+
+\lstinputlisting[language=modelica]{../Resolucio.mo}
+
+
 \lstinputlisting[language=modelica]{../ServiceDesk.mo}
 
 \lstinputlisting[language=modelica]{../UnificadorSolucionades.mo}
-
-\lstinputlisting[language=modelica]{../Empresa.mo}
-
-\lstinputlisting[language=modelica]{../Formacio.mo}
-
-\lstinputlisting[language=modelica]{../Incidencies.mo}
 
 \newpage
 \section{Exercici 2}
