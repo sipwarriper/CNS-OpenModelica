@@ -9,11 +9,13 @@ model Empresa
   //variables
   Real totalTancades (start = 0);
   Real totalObertes (start = 0);
+  Real tencadesAra (start = 0);
   
 equation
-  generades.incidencies = treballadors*ratiIncidencies + totalTancades*reopertures;
+  generades.incidencies = treballadors*ratiIncidencies + tencadesAra*reopertures;
+  der(tencadesAra) = tancades.incidencies;
   der(totalTancades) = totalTancades + tancades.incidencies;
-  der (totalObertes) = totalObertes + treballadors*ratiIncidencies + totalTancades*reopertures;
+  der (totalObertes) = totalObertes + treballadors*ratiIncidencies + tencadesAra*reopertures;
   
   
 end Empresa;
