@@ -12,9 +12,9 @@ model Resolucio
 //  Real incidenciesPendents (start = 0);
 equation
 
-  tancades.incidencies = min(entrada.incidencies*formacio*maximResolucions*treballadors, entrada.incidencies*formacio);
+  tancades.incidencies = entrada.incidencies*formacio;
   seguentNivell.incidencies = entrada.incidencies*(1-formacio);
-  entrada.incidencies-(entrada.incidencies*formacio*maximResolucions*treballadors)=0;
+  treballadors = ceil((entrada.incidencies*formacio)/maximResolucions);
 
 //  tancades.incidencies = max((entrada.incidencies + incidenciesPendents)*formacio*maximResolucions*treballadors, (entrada.incidencies + incidenciesPendents));
 //  seguentNivell.incidencies = entrada.incidencies*(1-formacio);
