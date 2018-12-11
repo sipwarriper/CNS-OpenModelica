@@ -320,6 +320,12 @@ INPUT ../UnificadorSolucionades.mo
 INPUT ../ServiceDesk.mo
 INPUT ../ServiceDesk.mo
 INPUT ../ServiceDesk.mo
+INPUT ../Empresa2.mo
+INPUT ../Empresa2.mo
+INPUT ../Empresa2.mo
+INPUT ex5.png
+INPUT ./ex5.png
+INPUT ./ex5.png
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out

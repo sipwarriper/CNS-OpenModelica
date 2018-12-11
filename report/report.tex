@@ -173,9 +173,18 @@ La mitjana d'incidències resoltes per persona i per dia són 8.89, que equival 
 El nou punt d'equilibri després d'afegir 3000 usuaris és 17 treballadors de nivell 1, 9 treballadors de nivell 2 i 9 treballadors de nivell 3.
 \newline Es passa de tancar una mitja de 10.1 incidències cada hora a tancar-ne 13.13.  
 \newline Els treballadors de nivell 1 resolen ara una mitjana de 6.57 incidències per hora mentre que els de nivell 2 i 3 en resolen 3.28.
+\subsection{Codi utilitzat}
+\lstinputlisting[language=modelica]{../Empresa2.mo}
 
 \section{Exercici 5}
-TODO
+Posat que el càlcul dels treballadors per nivell buscava aconseguir el màxim treball per persona de tal forma que no quedessin pendents, en aquest apartat no hem hagut de fer un gran canvi.
+La nostra simulació incorpora el personal a l'hora 2400 (dia 100), sinó no es podrà cobrir la demanda de serveis.
+La nova mitjana puja lleugerament (0.409375 per hora, 9.825 per día).
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{ex5.png}
+  \caption{Gràfica dels treballadors per nivells (veure que els treballadors N2 i N3 es solapen)}
+  \label{fig:plot1}
+\end{figure}
 
 \section{Exercici 6}
 El nou punt d'equilibri és 13 treballadors de nivell 1, 10 treballadors de nivell 2 i 3 treballadors de nivell 3.
