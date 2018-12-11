@@ -3,8 +3,9 @@ model ServiceDesk
   Resolucio n1(formacio=0.5, maximResolucions=0.41);
   Resolucio n2(formacio=0.5, maximResolucions=0.41);
   Resolucio n3(formacio=1, maximResolucions=0.41);
-  Empresa empresa(ratiIncidencies = 0.0001,treballadors = 10000,reopertures = 0.001);
+  Empresa empresa(ratiIncidencies = 0.001, usuaris = 10000, reopertures = 0.01);
   UnificadorSolucionades uniSolv;
+  
 equation
   connect(empresa.generades, n1.entrada);
   connect(n1.seguentNivell, n2.entrada);
