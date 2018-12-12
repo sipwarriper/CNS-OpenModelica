@@ -1,24 +1,19 @@
 \documentclass[8pt]{beamer}
 \usetheme{Copenhagen}
 \usecolortheme{dolphin}
-\usepackage{a4wide}
 \usepackage{epsfig}
 \usepackage{amsmath}
 \usepackage{tabu}
 \usepackage{amsfonts}
 \usepackage{latexsym}
 \usepackage[utf8]{inputenc}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{titlesec}    
-\usepackage{enumitem}
+\usepackage{listings}    
 \usepackage[catalan]{babel}
 \usepackage{newunicodechar}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{float}
-\usepackage[numbered,framed]{matlab-prettifier}
-\usepackage{xcolor}
+\usepackage{matlab-prettifier}
 \usepackage{pgf, tikz}
 \usepackage{listings}
 \input{listings-modelica.cfg}
@@ -83,8 +78,8 @@ literate={á}{{\'a}}1 {à}{{\`a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {í}{{
 
 \frame{\titlepage}
 
-\section{Plantejament del problema}
-  \begin{frame}
+\section[Plantejament]{Plantejament del problema}
+  \begin{frame}[containsverbatim,allowframebreaks]
     \frametitle{Plantejament}
     En el nostre exercici s'ens proposava simular un sistema de Service Desk centralitzat per a una empresa. Hi ha diversos nivells d'empleats, de manera que els nivells inferiors tractaran la majoria d'avaries, i les que no es puguin resoldre es passaran a un nivell superior on el personal tindrà major formació.
     \begin{figure}[h!]
@@ -101,42 +96,47 @@ literate={á}{{\'a}}1 {à}{{\`a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {í}{{
   \item \textbf{UnificadorSolucionades}: Model que rep totes les incidències resoltes i les unifica.
   \item \textbf{incidencies}: Classe connector per transmetre incidències 
 \end{itemize}
-\end{frame}
+  \end{frame}
 
-\begin{frame}
 \section{Model Incidències}
+\begin{frame}[containsverbatim,allowframebreaks]
 \lstinputlisting[language=modelica]{../Incidencies.mo}
 
 Aquesta classe no te cap secret, és de tipus connector i té un element Real \texttt{output} amb les incidències que es van passant.
 \end{frame}
+
 \section{Model Empresa}
-\begin{frame}
+\begin{frame}[containsverbatim,allowframebreaks]
 \lstinputlisting[language=modelica]{../Empresa.mo}
 Passem per paràmetre al instanciar el rati d'incidències, el nombre de treballadors i el rati de reopertures. Té dos connectors de incidències, un de sortida (generades) i un d'entrada (tancades).
 \end{frame}
-\section{Model Resolucio}
-\begin{frame}
-\lstinputlisting[language=modelica]{../Resolucio.mo}
 
+\section{Model Resolucio}
+\begin{frame}[containsverbatim,allowframebreaks]
+\lstinputlisting[language=modelica]{../Resolucio.mo}
+ 
 Model al qual li passem per paràmetre la formació i el màxim de resolucions que pot fer cada persona per hora. Té a més, tres connectors d'Incidències, les d'entrada, les tancades, i les que s'envien al següent nivell.
 Aquest model l'hem fet de forma que no quedin incidències pendents cada hora, ficant com a variable el nombre de treballadors. 
 Ficant la fórmula pertinent (el que vindrien a ser les incidències pendents) igualada a 0, ens fa el càlcul al fer la simulació.
 \end{frame}
+
 \section{Model UnficadorSolucionades}
-\begin{frame}
+\begin{frame}[containsverbatim,allowframebreaks]
 \lstinputlisting[language=modelica]{../UnificadorSolucionades.mo}
 
 Model de suport amb tres connectors d'Incidències d'entrada i un de sortida, que ens suma el valor dels tres connectors d'entrada.
 \end{frame}
-\begin{frame}
+
 \section{Model ServiceDesk}
+\begin{frame}[containsverbatim,allowframebreaks]
 \lstinputlisting[language=modelica]{../ServiceDesk.mo}
 
 Aquest model es el model el qual fa la simulació completa. Té tres objectes Resolucio (un per cada nivell de formació), un UnificadorSolucionades i un Empresa. 
 Aquests al instanciar-se sels hi ha de passar els paràmetres corresponents. Després, al apartat d'equacions el que fem és connectar els connectors de cada classe seguint el següent dibuix:
 \end{frame}
-\begin{frame}
+
 \subsection{Graf}
+\begin{frame}
 
 \begin{figure}%[H]
   \centering
@@ -172,8 +172,9 @@ Aquests al instanciar-se sels hi ha de passar els paràmetres corresponents. Des
   \end{tikzpicture}
 \end{figure}
 \end{frame}
-\begin{frame}
+
 \subsection{Exercici 2}
+\begin{frame}
 \textbf{Determinar el nombre de persones de cada nivell (N1, N2, N3) per tal que el sistema
 estigui equilibrat.}
 \newline
@@ -182,15 +183,18 @@ Els nombre de persones que equilibren el sistema són 13 treballadors de nivell 
 \newline Els treballadors del nivell 1 resolen una mitjana de 5.05 incidències per hora mentre que els de nivell 2 i 3 en resolen 2.53.
 En total hem necessitat 27 treballadors.
 \end{frame}
-\begin{frame}
+
+
 \subsection{Exercici 3}
+\begin{frame}
 \textbf{Quina és la mitjana d’incidències resoltes per persona i hora?}
 \newline
 \newline
 La mitjana d'incidències resoltes per persona i per dia són 8.89, que equival a 0.37 incidències resoltes per hora.
 \end{frame}
-\begin{frame}
+
 \subsection{Exercici 4}
+\begin{frame}
 \textbf{Si al cap de 100 dies s’incorporen 3000 persones a l’empresa què passarà amb el sistema?
 Quin serà el nou punt d’equilibri?}
 \newline
@@ -201,8 +205,10 @@ El nou punt d'equilibri després d'afegir 3000 usuaris és 17 treballadors de ni
 \subsection{Codi utilitzat:}
 \lstinputlisting[language=modelica]{../Empresa2.mo}
 \end{frame}
-\begin{frame}
+
+
 \subsection{Exercici 5}
+\begin{frame}
 \textbf{En quin moment hem d’anar incorporant el nou personal per tal de mantenir la mitjana
 d’incidències resoltes per persona i hora?}
 \newline
@@ -216,8 +222,9 @@ La nova mitjana puja lleugerament (0.409375 per hora, 9.825 per día).
   \label{fig:plot1}
 \end{figure}
 \end{frame}
-\begin{frame}
+
 \subsection{Exercici 6}
+\begin{frame}
 \textbf{ Què passa si augmentem el nivell de formació del personal de Nivell 2 i el passem de 0.5
 a 0.8? Quin serà el nou punt d’equilibri?}
 \newline
@@ -225,8 +232,10 @@ a 0.8? Quin serà el nou punt d’equilibri?}
 El nou punt d'equilibri és 13 treballadors de nivell 1, 10 treballadors de nivell 2 i 3 treballadors de nivell 3.
 \newline Al augmentar la formació dels treballadors hem passat de necessitar 27 treballadors en el supòsit original a 23.
 \end{frame}
-\begin{frame}
+
+
 \subsection{Exercici 7}
+\begin{frame}
 \textbf{Què passa si augmentem el nivell de formació del personal de Nivell 1 en lloc del de Nivell
 2 i el passem de 0.5 a 0.8? Quin serà el nou punt d’equilibri?}
 \newline
@@ -234,8 +243,9 @@ El nou punt d'equilibri és 13 treballadors de nivell 1, 10 treballadors de nive
 El nou punt d'equilibri és 20 treballadors de nivell 1, 3 treballadors de nivell 2 i 3 treballadors de nivell 3.
 \newline Continuem necessitant el mateix nombre de treballadors que en el supòsit anterior.
 \end{frame}
-\begin{frame}
+
 \subsection{Exercici 8}
+\begin{frame}
 \textbf{Què passa si augmentem el nivell de formació del personal de Nivell 1 en lloc del de Nivell
 2 i el passem de 0.5 a 0.8? Quin serà el nou punt d’equilibri?}
 \newline
